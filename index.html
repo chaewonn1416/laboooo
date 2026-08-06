@@ -5,27 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LABO 타겟 분석 리포트</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+  
 
-  :root {
-    --green: #1E7A5A;
-    --green-light: #E8F5EE;
-    --green-mid: #3DAA7A;
-    --gray-dark: #1A1A1A;
-    --gray: #555;
-    --gray-light: #F7F7F7;
-    --border: #E0E0E0;
-    --white: #ffffff;
-    --yellow: #F5A623;
-    --red: #D0021B;
-  }
+  
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: var(--white);
-    color: var(--gray-dark);
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: #ffffff;
+    color: #1A1A1A;
     font-size: 13px;
     line-height: 1.6;
   }
@@ -38,7 +27,7 @@
 
   /* COVER */
   .cover {
-    border-bottom: 3px solid var(--green);
+    border-bottom: 3px solid #1E7A5A;
     padding-bottom: 36px;
     margin-bottom: 48px;
   }
@@ -46,27 +35,27 @@
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: var(--green);
+    color: #1E7A5A;
     text-transform: uppercase;
     margin-bottom: 12px;
   }
   .cover h1 {
     font-size: 32px;
     font-weight: 700;
-    color: var(--gray-dark);
+    color: #1A1A1A;
     line-height: 1.3;
     margin-bottom: 8px;
   }
   .cover-sub {
     font-size: 15px;
-    color: var(--gray);
+    color: #555555;
     margin-bottom: 24px;
   }
   .cover-meta {
     display: flex;
     gap: 24px;
     font-size: 12px;
-    color: var(--gray);
+    color: #555555;
   }
   .cover-meta span { display: flex; align-items: center; gap: 6px; }
 
@@ -78,11 +67,11 @@
     gap: 10px;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 1.5px solid var(--border);
+    border-bottom: 1.5px solid #E0E0E0;
   }
   .section-num {
     width: 26px; height: 26px;
-    background: var(--green);
+    background: #1E7A5A;
     color: white;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
@@ -92,23 +81,23 @@
   .section-title {
     font-size: 16px;
     font-weight: 700;
-    color: var(--gray-dark);
+    color: #1A1A1A;
   }
   .section-desc {
     font-size: 12px;
-    color: var(--gray);
+    color: #555555;
     margin-top: 2px;
   }
 
   /* SUMMARY BOX */
   .summary-box {
-    background: var(--green-light);
-    border-left: 4px solid var(--green);
+    background: #E8F5EE;
+    border-left: 4px solid #1E7A5A;
     border-radius: 0 8px 8px 0;
     padding: 16px 20px;
     margin-bottom: 28px;
   }
-  .summary-box p { font-size: 13px; color: var(--gray-dark); line-height: 1.7; }
+  .summary-box p { font-size: 13px; color: #1A1A1A; line-height: 1.7; }
 
   /* STAT CARDS */
   .stat-row {
@@ -118,8 +107,8 @@
     margin-bottom: 28px;
   }
   .stat-card {
-    background: var(--white);
-    border: 1.5px solid var(--border);
+    background: #ffffff;
+    border: 1.5px solid #E0E0E0;
     border-radius: 10px;
     padding: 18px 16px;
     text-align: center;
@@ -127,19 +116,19 @@
   .stat-card .num {
     font-size: 28px;
     font-weight: 700;
-    color: var(--green);
+    color: #1E7A5A;
     line-height: 1;
     margin-bottom: 6px;
   }
   .stat-card .label {
     font-size: 12px;
     font-weight: 500;
-    color: var(--gray-dark);
+    color: #1A1A1A;
     margin-bottom: 4px;
   }
   .stat-card .sub {
     font-size: 11px;
-    color: var(--gray);
+    color: #555555;
   }
 
   /* TABLE */
@@ -149,7 +138,7 @@
     font-size: 12px;
   }
   th {
-    background: var(--green);
+    background: #1E7A5A;
     color: white;
     padding: 10px 12px;
     text-align: left;
@@ -158,11 +147,11 @@
   }
   td {
     padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #E0E0E0;
     vertical-align: top;
-    color: var(--gray-dark);
+    color: #1A1A1A;
   }
-  tr:nth-child(even) td { background: var(--gray-light); }
+  tr:nth-child(even) td { background: #F7F7F7; }
   tr:last-child td { border-bottom: none; }
 
   /* PERSONA CARDS */
@@ -173,12 +162,12 @@
     margin-bottom: 8px;
   }
   .persona-card {
-    border: 1.5px solid var(--border);
+    border: 1.5px solid #E0E0E0;
     border-radius: 10px;
     overflow: hidden;
   }
   .persona-head {
-    background: var(--green);
+    background: #1E7A5A;
     padding: 12px 14px;
     color: white;
   }
@@ -199,12 +188,12 @@
   .persona-label {
     font-size: 10px;
     font-weight: 700;
-    color: var(--green);
+    color: #1E7A5A;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 3px;
   }
-  .persona-item p { font-size: 11.5px; color: var(--gray-dark); line-height: 1.5; }
+  .persona-item p { font-size: 11.5px; color: #1A1A1A; line-height: 1.5; }
 
   /* PROBLEM CARDS */
   .problem-grid {
@@ -213,12 +202,12 @@
     gap: 12px;
   }
   .problem-card {
-    border: 1.5px solid var(--border);
+    border: 1.5px solid #E0E0E0;
     border-radius: 10px;
     overflow: hidden;
   }
   .problem-head {
-    background: var(--gray-dark);
+    background: #1A1A1A;
     padding: 10px 14px;
     display: flex;
     align-items: center;
@@ -237,12 +226,12 @@
   .p-label {
     font-size: 10px;
     font-weight: 700;
-    color: var(--green);
+    color: #1E7A5A;
     min-width: 36px;
     padding-top: 1px;
     text-transform: uppercase;
   }
-  .p-text { font-size: 11.5px; color: var(--gray-dark); line-height: 1.5; }
+  .p-text { font-size: 11.5px; color: #1A1A1A; line-height: 1.5; }
 
   /* MARKET SIZE */
   .market-funnel {
@@ -269,8 +258,8 @@
     gap: 8px;
   }
   .funnel-info { min-width: 160px; }
-  .funnel-info .f-label { font-size: 11px; font-weight: 700; color: var(--gray-dark); }
-  .funnel-info .f-sub { font-size: 10.5px; color: var(--gray); }
+  .funnel-info .f-label { font-size: 11px; font-weight: 700; color: #1A1A1A; }
+  .funnel-info .f-sub { font-size: 10.5px; color: #555555; }
 
   /* SOLUTION MAPPING */
   .mapping-row {
@@ -280,16 +269,16 @@
     gap: 8px;
     margin-bottom: 10px;
     padding: 10px 12px;
-    background: var(--gray-light);
+    background: #F7F7F7;
     border-radius: 8px;
-    border: 1px solid var(--border);
+    border: 1px solid #E0E0E0;
   }
-  .mapping-problem { font-size: 12px; color: var(--gray-dark); }
-  .mapping-arrow { text-align: center; font-size: 16px; color: var(--green); }
+  .mapping-problem { font-size: 12px; color: #1A1A1A; }
+  .mapping-arrow { text-align: center; font-size: 16px; color: #1E7A5A; }
   .mapping-solution {
     font-size: 12px;
     font-weight: 500;
-    color: var(--green);
+    color: #1E7A5A;
   }
   .mapping-header {
     display: grid;
@@ -301,16 +290,16 @@
   .mapping-header span {
     font-size: 11px;
     font-weight: 700;
-    color: var(--gray);
+    color: #555555;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
   /* COMPETITION */
-  .check { color: var(--green); font-weight: 700; }
-  .cross { color: var(--red); }
-  .partial { color: var(--yellow); }
-  td.highlight { font-weight: 700; color: var(--green); }
+  .check { color: #1E7A5A; font-weight: 700; }
+  .cross { color: #D0021B; }
+  .partial { color: #F5A623; }
+  td.highlight { font-weight: 700; color: #1E7A5A; }
 
   /* VALIDATION */
   .validation-grid {
@@ -319,14 +308,14 @@
     gap: 12px;
   }
   .val-card {
-    border: 1.5px solid var(--border);
+    border: 1.5px solid #E0E0E0;
     border-radius: 10px;
     padding: 14px 16px;
   }
   .val-card .v-label {
     font-size: 10px;
     font-weight: 700;
-    color: var(--green);
+    color: #1E7A5A;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 6px;
@@ -334,10 +323,10 @@
   .val-card .v-title {
     font-size: 13px;
     font-weight: 700;
-    color: var(--gray-dark);
+    color: #1A1A1A;
     margin-bottom: 6px;
   }
-  .val-card p { font-size: 12px; color: var(--gray); line-height: 1.6; }
+  .val-card p { font-size: 12px; color: #555555; line-height: 1.6; }
 
   /* MENTOR ASK */
   .ask-list { list-style: none; }
@@ -345,32 +334,32 @@
     display: flex;
     gap: 10px;
     padding: 12px 14px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #E0E0E0;
     align-items: flex-start;
   }
   .ask-list li:last-child { border-bottom: none; }
   .ask-num {
     width: 22px; height: 22px;
-    background: var(--green-light);
-    color: var(--green);
+    background: #E8F5EE;
+    color: #1E7A5A;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; font-weight: 700;
     flex-shrink: 0;
     margin-top: 1px;
   }
-  .ask-text { font-size: 12.5px; color: var(--gray-dark); line-height: 1.6; }
+  .ask-text { font-size: 12.5px; color: #1A1A1A; line-height: 1.6; }
 
   /* FOOTER */
   .footer {
     margin-top: 48px;
     padding-top: 16px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid #E0E0E0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 11px;
-    color: var(--gray);
+    color: #555555;
   }
 </style>
 </head>
@@ -663,7 +652,7 @@
       </div>
       <div class="funnel-row">
         <div class="funnel-bar-wrap">
-          <div class="funnel-bar" style="background: var(--green-mid); width: 78%;">
+          <div class="funnel-bar" style="background: #3DAA7A; width: 78%;">
             SAM · 이공계 연구실 &nbsp;|&nbsp; 7만+ 개
           </div>
         </div>
@@ -674,7 +663,7 @@
       </div>
       <div class="funnel-row">
         <div class="funnel-bar-wrap">
-          <div class="funnel-bar" style="background: var(--green); width: 30%;">
+          <div class="funnel-bar" style="background: #1E7A5A; width: 30%;">
             SOM · 초기 목표 &nbsp;|&nbsp; 1,000개
           </div>
         </div>
@@ -801,7 +790,7 @@
         </tr>
       </tbody>
     </table>
-    <div style="margin-top: 10px; font-size: 11px; color: var(--gray);">✓ 지원 &nbsp;·&nbsp; △ 부분 지원 &nbsp;·&nbsp; ✕ 미지원</div>
+    <div style="margin-top: 10px; font-size: 11px; color: #555555;">✓ 지원 &nbsp;·&nbsp; △ 부분 지원 &nbsp;·&nbsp; ✕ 미지원</div>
   </div>
 
   <!-- 6. 해결 방안 매핑 -->

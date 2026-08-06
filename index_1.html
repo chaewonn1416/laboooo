@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LABO 타겟 분석 리포트</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+  :root {
+    --green: #1E7A5A;
+    --green-light: #E8F5EE;
+    --green-mid: #3DAA7A;
+    --gray-dark: #1A1A1A;
+    --gray: #555;
+    --gray-light: #F7F7F7;
+    --border: #E0E0E0;
+    --white: #ffffff;
+    --yellow: #F5A623;
+    --red: #D0021B;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--white);
+    color: var(--gray-dark);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 40px;
+  }
+
+  /* COVER */
+  .cover {
+    border-bottom: 3px solid var(--green);
+    padding-bottom: 36px;
+    margin-bottom: 48px;
+  }
+  .cover-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .cover h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gray-dark);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .cover-sub {
+    font-size: 15px;
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .cover-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* SECTION */
+  .section { margin-bottom: 52px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .section-num {
+    width: 26px; height: 26px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-dark);
+  }
+  .section-desc {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  /* SUMMARY BOX */
+  .summary-box {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .summary-box p { font-size: 13px; color: var(--gray-dark); line-height: 1.7; }
+
+  /* STAT CARDS */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-card .label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-dark);
+    margin-bottom: 4px;
+  }
+  .stat-card .sub {
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  th {
+    background: var(--green);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--gray-dark);
+  }
+  tr:nth-child(even) td { background: var(--gray-light); }
+  tr:last-child td { border-bottom: none; }
+
+  /* PERSONA CARDS */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .persona-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .persona-head {
+    background: var(--green);
+    padding: 12px 14px;
+    color: white;
+  }
+  .persona-head .role {
+    font-size: 10px;
+    font-weight: 500;
+    opacity: 0.85;
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .persona-head .name { font-size: 14px; font-weight: 700; }
+  .persona-body { padding: 12px 14px; }
+  .persona-item {
+    margin-bottom: 10px;
+  }
+  .persona-item:last-child { margin-bottom: 0; }
+  .persona-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .persona-item p { font-size: 11.5px; color: var(--gray-dark); line-height: 1.5; }
+
+  /* PROBLEM CARDS */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .problem-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .problem-head {
+    background: var(--gray-dark);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .problem-head .icon { font-size: 15px; }
+  .problem-head .title { font-size: 13px; font-weight: 700; color: white; }
+  .problem-body { padding: 12px 14px; }
+  .problem-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: flex-start;
+  }
+  .problem-row:last-child { margin-bottom: 0; }
+  .p-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--green);
+    min-width: 36px;
+    padding-top: 1px;
+    text-transform: uppercase;
+  }
+  .p-text { font-size: 11.5px; color: var(--gray-dark); line-height: 1.5; }
+
+  /* MARKET SIZE */
+  .market-funnel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .funnel-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .funnel-bar-wrap { flex: 1; }
+  .funnel-bar {
+    height: 40px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    gap: 8px;
+  }
+  .funnel-info { min-width: 160px; }
+  .funnel-info .f-label { font-size: 11px; font-weight: 700; color: var(--gray-dark); }
+  .funnel-info .f-sub { font-size: 10.5px; color: var(--gray); }
+
+  /* SOLUTION MAPPING */
+  .mapping-row {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    background: var(--gray-light);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .mapping-problem { font-size: 12px; color: var(--gray-dark); }
+  .mapping-arrow { text-align: center; font-size: 16px; color: var(--green); }
+  .mapping-solution {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green);
+  }
+  .mapping-header {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 8px;
+    margin-bottom: 6px;
+    padding: 0 12px;
+  }
+  .mapping-header span {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* COMPETITION */
+  .check { color: var(--green); font-weight: 700; }
+  .cross { color: var(--red); }
+  .partial { color: var(--yellow); }
+  td.highlight { font-weight: 700; color: var(--green); }
+
+  /* VALIDATION */
+  .validation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .val-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .val-card .v-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .val-card .v-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-dark);
+    margin-bottom: 6px;
+  }
+  .val-card p { font-size: 12px; color: var(--gray); line-height: 1.6; }
+
+  /* MENTOR ASK */
+  .ask-list { list-style: none; }
+  .ask-list li {
+    display: flex;
+    gap: 10px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .ask-list li:last-child { border-bottom: none; }
+  .ask-num {
+    width: 22px; height: 22px;
+    background: var(--green-light);
+    color: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .ask-text { font-size: 12.5px; color: var(--gray-dark); line-height: 1.6; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--gray);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-tag">Market Research Report</div>
+    <h1>LABO 타겟 분석 리포트</h1>
+    <div class="cover-sub">누가 문제를 겪고, 무엇이 문제이며, LABO는 어떻게 해결하는가</div>
+    <div class="cover-meta">
+      <span>📅 2026년 8월</span>
+      <span>👥 LABO Team · 연세대학교 융합과학공학부</span>
+      <span>🎯 멘토링 참고용</span>
+    </div>
+  </div>
+
+  <!-- 1. EXECUTIVE SUMMARY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div>
+        <div class="section-title">Executive Summary</div>
+        <div class="section-desc">핵심 내용 한눈에 보기</div>
+      </div>
+    </div>
+    <div class="summary-box">
+      <p>국내 이공계 연구실 <strong>9만 개 이상</strong>은 잡무 편중, 장비 기록 누락, 소모품 재고 소진이라는 반복적 운영 비효율을 겪고 있다. LABO는 이를 <strong>자동화 · 기록화 · 공정화</strong> 세 방향으로 해결하는 연구실 올인원 운영 플랫폼이다. 잡무 자동 배분, QR 장비 기록, 신호등 소모품 관리, 통합 일정 등 5개 Core 기능을 기본 제공하며, 연구실 유형(Wet Lab, Dry Lab, 화학·재료 등)에 따라 도메인 특화 블록을 선택적으로 추가하는 <strong>모듈 OS 구조</strong>로 확장한다. 실사용자(학생·연구원)와 결제권자(교수·PI)를 분리한 Freemium 모델로 Core는 무료 제공 후 도메인 블록·맞춤 커스텀 구독으로 수익화하며, 초기 1,000개 연구실 확보 시 <strong>연 최대 6억 원</strong> 매출을 목표로 한다.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="num">7만+</div>
+        <div class="label">1차 목표 시장</div>
+        <div class="sub">국내 이공계 연구실</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">1,000개</div>
+        <div class="label">초기 목표 연구실</div>
+        <div class="sub">무료 배포 후 레퍼런스 확보</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">최대 6억</div>
+        <div class="label">연 예상 매출</div>
+        <div class="sub">월 3~5만원 × 1,000개</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 타겟 고객 정의 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div>
+        <div class="section-title">타겟 고객 정의</div>
+        <div class="section-desc">실사용자 vs. 결제자를 분리해 이해한다</div>
+      </div>
+    </div>
+
+    <table style="margin-bottom: 20px;">
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>대상</th>
+          <th>역할</th>
+          <th>LABO와의 관계</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>실사용자</strong></td>
+          <td>대학원생, 학부 인턴</td>
+          <td>매일 앱을 직접 사용</td>
+          <td>편의성을 느끼고 내부에서 도입 제안 (Bottom-up)</td>
+        </tr>
+        <tr>
+          <td><strong>결제자</strong></td>
+          <td>지도교수, 행정 담당자</td>
+          <td>구독료 결제 결정</td>
+          <td>연구실 투명성·관리 효율 향상에 가치를 느낌</td>
+        </tr>
+        <tr>
+          <td><strong>간접 수혜자</strong></td>
+          <td>학과 행정실, 연구재단</td>
+          <td>연구비 집행 감독</td>
+          <td>장비·소모품 이력 데이터로 감사 대응 용이</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-head">
+          <div class="role">Persona 1 · 실사용자</div>
+          <div class="name">김연구 (박사과정 3년차)</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-item">
+            <div class="persona-label">상황</div>
+            <p>매일 오전 실험 전 장비 대장에 수기로 이름과 시간을 적고, 소모품이 떨어지면 카톡방에 공지한다.</p>
+          </div>
+          <div class="persona-item">
+            <div class="persona-label">불편함</div>
+            <p>청소 당번이 항상 같은 사람에게 몰림. 시약이 다 떨어진 걸 실험 당일에야 알게 됨.</p>
+          </div>
+          <div class="persona-item">
+            <div class="persona-label">원하는 것</div>
+            <p>잡무가 공정하게 배분되고, 소모품 상태를 한눈에 파악하고 싶음.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-head">
+          <div class="role">Persona 2 · 결제자</div>
+          <div class="name">박교수 (지도교수)</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-item">
+            <div class="persona-label">상황</div>
+            <p>10명 규모 연구실을 운영하며 장비 관리와 소모품 구매를 대학원생에게 위임하고 있다.</p>
+          </div>
+          <div class="persona-item">
+            <div class="persona-label">불편함</div>
+            <p>장비가 언제 누가 썼는지 파악이 안 됨. 소모품 구매 요청이 갑작스럽게 들어옴.</p>
+          </div>
+          <div class="persona-item">
+            <div class="persona-label">원하는 것</div>
+            <p>연구실 운영 현황을 대시보드로 한눈에 보고 싶음. 월 3~5만 원은 연구비 대비 부담 없음.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-head">
+          <div class="role">Persona 3 · 신규 인턴</div>
+          <div class="name">이인턴 (학부 인턴 1개월차)</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-item">
+            <div class="persona-label">상황</div>
+            <p>연구실에 막 합류해 장비 위치도, 소모품이 어디 있는지도, 잡무 규칙도 모른다.</p>
+          </div>
+          <div class="persona-item">
+            <div class="persona-label">불편함</div>
+            <p>선배에게 일일이 물어봐야 함. 장비 사용법과 순서를 구두로만 전달받아 놓침이 생김.</p>
+          </div>
+          <div class="persona-item">
+            <div class="persona-label">원하는 것</div>
+            <p>앱 하나로 연구실 운영 규칙을 파악하고 빠르게 적응하고 싶음.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 문제 정의 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div>
+        <div class="section-title">문제 정의</div>
+        <div class="section-desc">누가, 어떤 상황에서, 얼마나 자주, 얼마나 심각하게</div>
+      </div>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-head">
+          <div class="icon">📋</div>
+          <div class="title">잡무 편중 및 일정 관리 부재</div>
+        </div>
+        <div class="problem-body">
+          <div class="problem-row">
+            <div class="p-label">누가</div>
+            <div class="p-text">대학원생 전체, 특히 저연차 구성원</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">상황</div>
+            <div class="p-text">청소·시약 폐기·소모품 주문 담당이 구두로 정해지고 카톡으로만 공지됨</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">빈도</div>
+            <div class="p-text">매주 반복 발생</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">심각도</div>
+            <div class="p-text">같은 사람에게 잡무가 몰려 불만 누적, 연구 집중도 저하</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-head">
+          <div class="icon">🔬</div>
+          <div class="title">장비 사용 기록 수기 관리</div>
+        </div>
+        <div class="problem-body">
+          <div class="problem-row">
+            <div class="p-label">누가</div>
+            <div class="p-text">장비를 사용하는 모든 연구원</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">상황</div>
+            <div class="p-text">종이 대장 또는 엑셀에 이름·시간·목적을 수기 입력</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">빈도</div>
+            <div class="p-text">장비 사용 시마다 (일 1~5회)</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">심각도</div>
+            <div class="p-text">기록 누락·이중 예약 발생, 감사 시 이력 추적 불가</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-head">
+          <div class="icon">🧪</div>
+          <div class="title">소모품 재고 소진 인지 지연</div>
+        </div>
+        <div class="problem-body">
+          <div class="problem-row">
+            <div class="p-label">누가</div>
+            <div class="p-text">실험을 수행하는 대학원생, 구매 담당자</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">상황</div>
+            <div class="p-text">재고 현황을 별도 시스템 없이 눈대중으로 파악</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">빈도</div>
+            <div class="p-text">월 1~2회 소진 사태 발생 (팀원 경험 기반)</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">심각도</div>
+            <div class="p-text">실험 당일 재고 소진 확인 → 실험 지연 → 연구 일정 차질</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-head">
+          <div class="icon">📅</div>
+          <div class="title">미팅·일정 조율 비효율</div>
+        </div>
+        <div class="problem-body">
+          <div class="problem-row">
+            <div class="p-label">누가</div>
+            <div class="p-text">교수·대학원생·인턴 전체</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">상황</div>
+            <div class="p-text">미팅 일정을 카톡·이메일로 개별 조율, 공지 분산</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">빈도</div>
+            <div class="p-text">주 1~2회 정기 미팅 + 수시 일정 변경</div>
+          </div>
+          <div class="problem-row">
+            <div class="p-label">심각도</div>
+            <div class="p-text">일정 공유 채널이 분산되어 누락 발생, 불필요한 커뮤니케이션 비용</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 시장 규모 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div>
+        <div class="section-title">시장 규모 (TAM · SAM · SOM)</div>
+        <div class="section-desc">출처: 과기부 연구실 안전관리 실태조사 2024년 결과 공표 (2025년 결과는 집계 중)</div>
+      </div>
+    </div>
+
+    <div class="market-funnel">
+      <div class="funnel-row">
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar" style="background: #1A1A1A; width: 100%;">
+            TAM · 전체 연구실 &nbsp;|&nbsp; 9만+ 개
+          </div>
+        </div>
+        <div class="funnel-info">
+          <div class="f-label">전체 시장</div>
+          <div class="f-sub">대학 + 연구기관 + 기업부설연구소</div>
+        </div>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar" style="background: var(--green-mid); width: 78%;">
+            SAM · 이공계 연구실 &nbsp;|&nbsp; 7만+ 개
+          </div>
+        </div>
+        <div class="funnel-info">
+          <div class="f-label">이공계 집중 시장</div>
+          <div class="f-sub">의학/생물·화학·전기·기계 분야</div>
+        </div>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar" style="background: var(--green); width: 30%;">
+            SOM · 초기 목표 &nbsp;|&nbsp; 1,000개
+          </div>
+        </div>
+        <div class="funnel-info">
+          <div class="f-label">초기 획득 가능 시장</div>
+          <div class="f-sub">교내 베타 → 레퍼런스 확보 → 확장</div>
+        </div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>이공계 세부 분야</th>
+          <th>연구실 수</th>
+          <th>비율</th>
+          <th>LABO 연관 Pain Point</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>의학 / 생물</td>
+          <td>22,163개</td>
+          <td>31.6%</td>
+          <td>시약·소모품 재고 관리, 멸균 장비 사용 기록</td>
+        </tr>
+        <tr>
+          <td>화학 / 화공</td>
+          <td>17,943개</td>
+          <td>25.6%</td>
+          <td>유해화학물질 사용 이력, 소모품 소진 관리</td>
+        </tr>
+        <tr>
+          <td>전기 / 전자</td>
+          <td>15,836개</td>
+          <td>22.6%</td>
+          <td>고가 장비 사용 예약, 이중 예약 방지</td>
+        </tr>
+        <tr>
+          <td>기계 / 물리</td>
+          <td>14,974개</td>
+          <td>21.3%</td>
+          <td>장비 가동률 추적, 유지보수 일정 관리</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 5. 경쟁사 분석 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div>
+        <div class="section-title">경쟁사 분석</div>
+        <div class="section-desc">기능별 비교 및 LABO 차별점</div>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>기능</th>
+          <th>LABO</th>
+          <th>LabArchives</th>
+          <th>Quartzy</th>
+          <th>카톡+엑셀 (현황)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>QR 장비 사용 기록</td>
+          <td class="check">✓ (QR 스캔)</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕ (수기)</td>
+        </tr>
+        <tr>
+          <td>소모품 신호등 관리</td>
+          <td class="check">✓ (탭 1회)</td>
+          <td class="cross">✕</td>
+          <td class="partial">△ (수량 입력)</td>
+          <td class="cross">✕</td>
+        </tr>
+        <tr>
+          <td>잡무 자동 배분</td>
+          <td class="check">✓</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+        </tr>
+        <tr>
+          <td>통합 일정 캘린더</td>
+          <td class="check">✓</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="partial">△ (분산)</td>
+        </tr>
+        <tr>
+          <td>실험 타이머 (멀티)</td>
+          <td class="check">✓</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+        </tr>
+        <tr>
+          <td>한국어 UI / 국내 특화</td>
+          <td class="check">✓</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>모바일 앱 (iOS/Android)</td>
+          <td class="check">✓</td>
+          <td class="partial">△ (웹 중심)</td>
+          <td class="partial">△ (웹 중심)</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>무료 시작 가능</td>
+          <td class="check">✓ (Freemium)</td>
+          <td class="partial">△ (제한적)</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top: 10px; font-size: 11px; color: var(--gray);">✓ 지원 &nbsp;·&nbsp; △ 부분 지원 &nbsp;·&nbsp; ✕ 미지원</div>
+  </div>
+
+  <!-- 6. 해결 방안 매핑 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div>
+        <div class="section-title">문제 → 해결 방안 1:1 매핑</div>
+        <div class="section-desc">각 Pain Point에 LABO의 어떤 기능이 대응하는가</div>
+      </div>
+    </div>
+    <div class="mapping-header">
+      <span>문제</span>
+      <span></span>
+      <span>LABO 기능</span>
+    </div>
+    <div class="mapping-row">
+      <div class="mapping-problem">잡무가 항상 같은 사람에게 몰림</div>
+      <div class="mapping-arrow">→</div>
+      <div class="mapping-solution">잡무 자동 배분 알고리즘 + 횟수 시각화 대시보드</div>
+    </div>
+    <div class="mapping-row">
+      <div class="mapping-problem">장비 사용 대장 수기 작성, 기록 누락</div>
+      <div class="mapping-arrow">→</div>
+      <div class="mapping-solution">QR 스캔으로 사용자·시간 자동 기록, 이력 조회</div>
+    </div>
+    <div class="mapping-row">
+      <div class="mapping-problem">실험 당일 소모품 소진 확인</div>
+      <div class="mapping-arrow">→</div>
+      <div class="mapping-solution">신호등 탭 1회 → 전체 구성원 즉시 푸시 알림</div>
+    </div>
+    <div class="mapping-row">
+      <div class="mapping-problem">미팅·일정 공지가 카톡·이메일에 분산</div>
+      <div class="mapping-arrow">→</div>
+      <div class="mapping-solution">랩·개인·잡무 통합 캘린더 + 공지 게시판</div>
+    </div>
+    <div class="mapping-row">
+      <div class="mapping-problem">여러 실험 타이머를 동시에 관리 불가</div>
+      <div class="mapping-arrow">→</div>
+      <div class="mapping-solution">실험별 병렬 멀티 타이머 + 백그라운드 알림</div>
+    </div>
+    <div class="mapping-row">
+      <div class="mapping-problem">신규 인턴의 연구실 적응 시간 과다</div>
+      <div class="mapping-arrow">→</div>
+      <div class="mapping-solution">앱 하나로 장비·소모품·잡무 규칙 즉시 파악</div>
+    </div>
+  </div>
+
+  <!-- 7. 검증 현황 및 멘토 질문 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div>
+        <div class="section-title">현재 검증 현황 및 다음 단계</div>
+        <div class="section-desc">현재 개발 현황 및 향후 계획</div>
+      </div>
+    </div>
+    <div class="validation-grid" style="margin-bottom: 24px;">
+      <div class="val-card">
+        <div class="v-label">완료</div>
+        <div class="v-title">MVP 개발</div>
+        <p>핵심 기능(QR 장비, 소모품 신호등, 잡무 배분, 캘린더, 멀티 타이머) 구현 완료. vercel 배포 운영 중.</p>
+      </div>
+      <div class="val-card">
+        <div class="v-label">완료</div>
+        <div class="v-title">문제 검증</div>
+        <p>팀원 직접 연구실 경험 기반 Pain Point 도출. 주변 연구실 구성원 대상 비공식 인터뷰 수행.</p>
+      </div>
+      <div class="val-card">
+        <div class="v-label">진행 중</div>
+        <div class="v-title">교내 베타 테스트</div>
+        <p>2026년 6월 교내 이공계 연구실 3~5곳 대상 베타 배포 및 사용자 피드백 수집 예정.</p>
+      </div>
+      <div class="val-card">
+        <div class="v-label">예정</div>
+        <div class="v-title">유료 전환 검증</div>
+        <p>2026년 9월 앱스토어 출시 후 2027년 상반기 Pro 플랜 유료 전환. 전환율 5% 목표.</p>
+      </div>
+    </div>
+
+    
+
+  <div class="footer">
+    <span>LABO Team · 연세대학교 융합과학공학부 · 변은형, 전민서, 노채원</span>
+    <span>2026.08</span>
+  </div>
+
+</div>
+</body>
+</html>
